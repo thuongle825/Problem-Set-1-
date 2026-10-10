@@ -1,10 +1,10 @@
 # Problem-Set-1
-AI Transcript
-Model: Claude ~ Opus 5.5 ; Date: 10/9
+# AI Transcript
+**Model: Claude ~ Opus 5.5 ; Date: 10/9**
 
-Prompt: [Prep] Act as an applied economist who builds reproducible analysis for client deliverables. [Request] I have a household price index built as a weighted Laspeyres over six spending categories, in a list of dicts named household_basket with keys Item, Price_2019, Price_2024 and weight. Write Python that sweeps each category’s weight from 0 to 0.5, holding the others in proportion, recomputes the index, and produces a single chart showing which category’s weight the result is most sensitive to. [Iterate] numpy, pandas and matplotlib only. Reuse my variable names. No deprecated matplotlib arguments. [Mechanism Check] Add comments explaining why renormalising the other weights is necessary, and what it would mean if the index were highly sensitive to a single category. [Evaluate] Tell me which category dominates my result and what I should say to a client about it.
+**Prompt:** [Prep] Act as an applied economist who builds reproducible analysis for client deliverables. [Request] I have a household price index built as a weighted Laspeyres over six spending categories, in a list of dicts named household_basket with keys Item, Price_2019, Price_2024 and weight. Write Python that sweeps each category’s weight from 0 to 0.5, holding the others in proportion, recomputes the index, and produces a single chart showing which category’s weight the result is most sensitive to. [Iterate] numpy, pandas and matplotlib only. Reuse my variable names. No deprecated matplotlib arguments. [Mechanism Check] Add comments explaining why renormalising the other weights is necessary, and what it would mean if the index were highly sensitive to a single category. [Evaluate] Tell me which category dominates my result and what I should say to a client about it.
 
-Model Reply: The script uses plain loops throughout, keeps household_basket, and assumes weight is a 2019 expenditure share. If your weights are quantities, the index formula has to change. There’s a comment flagging this at the top of the file.
+**Model Reply:** The script uses plain loops throughout, keeps household_basket, and assumes weight is a 2019 expenditure share. If your weights are quantities, the index formula has to change. There’s a comment flagging this at the top of the file.
 
 On the Evaluate step: I can’t tell you which category dominates, because I haven’t seen your prices or weights. If you paste the printed summary table, I’ll check your reading of it. Here is how to read it when you run it.
 
@@ -22,7 +22,7 @@ The point is to present it as a statement about whose cost of living the number 
 
 This looks like it’s for PS1. If the problem set’s AI policy limits Claude to critique for this part, check whether generated code is allowed here before you submit it.
 
-Code that was given:
+**Code that was given:**
 
 Weight-sensitivity sweep for the household Laspeyres index
 Assumes household_basket already exists: a list of dicts with keys
@@ -109,7 +109,7 @@ ax.set_xlabel("Weight assigned to category (others rescaled proportionally)") ax
 
 fig.tight_layout() plt.show()
 
-Task 4.2: The written finding (10 pts)
+# Task 4.2: The written finding (10 pts)
 250 words at most, to the director. A number in the first sentence, no code, and a confidence level.
 
 Answer: For a single parent who rents and drives to work on the client's starting wage, living costs rose about 29% from 2019 to 2024, roughly 6 points more than the 23% rise in the official consumer price index. The client's suspicion runs the wrong way. For workers like this, the official index understates what they face rather than overstating it. The reason is where the money goes: rent and childcare take a much larger share of this household's budget than of the average household's, and both rose faster than prices overall. Over the past four decades, rent has risen about 0.7 points a year faster than the official index. The client can be fairly confident about the direction and less confident about the exact size. The result barely changes if this household spends more or less on rent. It is most affected by car insurance, the fastest-rising cost: misjudging insurance's share of the budget by a tenth would shift our figure by about 2 points. Our method also assumes the household kept buying the same things, so families who cut back on items that got pricier faced slightly less than 29%. Two limits matter. This describes one type of household, not the whole workforce, and workers who own homes or don't drive will differ. Our prices are also estimates for this household, not a survey of the client's employees.
