@@ -71,7 +71,7 @@ for w_k in sweep_values:
     index_values.append(laspeyres_index(relatives, new_weights))
 
 sweep_results[items[k]] = index_values
-# The index is linear in w_k, so the slope is constant: endpoints are enough.
+The index is linear in w_k, so the slope is constant: endpoints are enough.
 slopes[items[k]] = (index_values[-1] - index_values[0]) / (sweep_values[-1] - sweep_values[0])
 ---------------------------------------------------------------
 3. Summary table
